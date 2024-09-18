@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <malloc.h>
+#include <stdbool.h>
+//#include <malloc.h>
 #include <unistd.h>
 #include <string.h>
 #include "tris.h"
@@ -10,9 +11,9 @@
 /* echanger                                                                   */
 /* void echanger(int *t, int n1, int n2)                                      */
 /*                                                                            */
-/* Echanger les éléments d'indice [n1] et [n2] du tableau d'entiers [t]       */
+/* Echanger les ï¿½lï¿½ments d'indice [n1] et [n2] du tableau d'entiers [t]       */
 /*                                                                            */
-/* Entrées :                                                                  */
+/* Entrï¿½es :                                                                  */
 /*   - [t]  : tableau d'entiers                                               */
 /*   - [n1] : indice                                                          */
 /*   - [n2] : indice                                                          */
@@ -37,10 +38,10 @@
 /* tri_[algo_tri]                                                             */
 /* void tri_[algo_tri] (int *t, int n, structSondes *complexite)             */
 /*                                                                            */
-/* Trier le tableau d'entiers [t] à [n] éléments                              */
+/* Trier le tableau d'entiers [t] ï¿½ [n] ï¿½lï¿½ments                              */
 /* [algo_tri] : bulle_naif, bulle_bool, bulle_opt, selection, insertion       */
 /*                                                                            */
-/* Entrées :                                                                  */
+/* Entrï¿½es :                                                                  */
 /*   - [t] : tableau d'entiers                                                */
 /*   - [n] : nombre d'entiers du tableau                                      */
 /*                                                                            */
@@ -48,7 +49,7 @@
 /*   - [t] : tableau d'entiers                                                */
 /*                                                                            */
 /* Sorties :                                                                  */
-/*   - [sondes] : structure résultat des sondes sur l'algorithme         */
+/*   - [sondes] : structure rï¿½sultat des sondes sur l'algorithme         */
 /*            sondes.nb_comparaisons                                     */
 /*            sondes.nb_echanges                                         */
 /*            sondes.nb_copies                                           */
@@ -58,7 +59,13 @@
    {
       int i, j;
       structSondes sondes = {0, 0, 0};
-   	
+   	for (i = 1; i < n-1; i ++) {
+         for (j = 1; j < n-1; j ++) {
+            if (t[j-1] > t[j]) {
+               echanger(t, t[j-1], t[j]);
+            }
+         }
+      }
      
       return sondes;
    }
@@ -67,12 +74,25 @@
 
    structSondes tri_bulle_bool(int *t, int n)
    {
-   // A faire : utilisation d'un drapeau (booléen) qui teste que les données sont triées
-   // en une lecture des données
-   
-
+   // A faire : utilisation d'un drapeau (boolï¿½en) qui teste que les donnï¿½es sont triï¿½es
+   // en une lecture des donnï¿½es
       structSondes sondes = {0, 0, 0};
-   
+      int i, j;
+      bool drapeau;
+
+   	for (i = 1; i < n-1; i ++) {
+         drapeau = true;
+         for (j = 1; j < n-1; j ++) {
+            if (t[j-1] > t[j]) {
+               drapeau = false;
+               echanger(t, t[j-1], t[j]);
+            }
+         if (drapeau == true) {
+            return sondes;
+         }
+         }
+      }
+     
       return sondes;
    }
 	
@@ -80,12 +100,21 @@
 
    structSondes tri_bulle_opt(int *t, int n)
    {
-   // A faire : on teste l'endroit du dernier échange pour modifier la boucle principale.
-   // Si le dernier échange est entre t_0 et t_1 alors on a terminé.
+   // A faire : on teste l'endroit du dernier ï¿½change pour modifier la boucle principale.
+   // Si le dernier ï¿½change est entre t_0 et t_1 alors on a terminï¿½.
       
+      int i, j;
+      int last_switch = n;
       structSondes sondes = {0, 0, 0};
-   
-
+   	for (i = 1; i < n-1; i ++) {
+         for (j = 1; j < n-1; j ++) {
+            if (t[j-1] > t[j]) {
+               echanger(t, t[j-1], t[j]);
+               last_switch = j;
+            }
+         }
+      }
+     
       return sondes;
    }
 
@@ -124,7 +153,7 @@
 /* Trier la portion du tableau d'entiers [t] comprise entre les indices       */
 /* [gauche] et [droite]                                                       */
 /*                                                                            */
-/* Entrées :                                                                  */
+/* Entrï¿½es :                                                                  */
 /*   - [t] : tableau d'entiers                                                */
 /*   - [gauche] : indice gauche                                               */
 /*   - [droit] : indice droit                                                */
@@ -133,7 +162,7 @@
 /*   - [t] : tableau d'entiers                                                */
 /*                                                                            */
 /* Sorties :                                                                  */
-/*   - [sondes] : structure résultat des sondes sur l'algorithme              */
+/*   - [sondes] : structure rï¿½sultat des sondes sur l'algorithme              */
 /*            sondes.nb_comparaisons                                     */
 /*            sondes.nb_echanges                                         */
 /*            sondes.nb_copies                                           */
@@ -148,3 +177,4 @@
       return sondes;			
    
    }
+

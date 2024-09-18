@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <malloc.h>
+//#include <malloc.h>
 #include <unistd.h>
 #include <string.h>
 
@@ -11,19 +11,19 @@
 /* f_lire_data                                                                */
 /* int * f_lire_data(char *fichier, int *n);                                  */
 /*                                                                            */
-/* Créer un tableau [t]  contenant les  entiers  lus  dans le fichier texte   */
+/* Crï¿½er un tableau [t]  contenant les  entiers  lus  dans le fichier texte   */
 /* dans le fichier texte de nom [fichier]                                     */
 /*                                                                            */
-/* Entrées :                                                                  */
-/*   - [fichier] : nom du fichier texte contenant les données entieres        */
-/*                 première ligne   : nombre [n] d'éléments à lire            */
-/*                 lignes suivantes : les [n] entiers à lire                  */
+/* Entrï¿½es :                                                                  */
+/*   - [fichier] : nom du fichier texte contenant les donnï¿½es entieres        */
+/*                 premiï¿½re ligne   : nombre [n] d'ï¿½lï¿½ments ï¿½ lire            */
+/*                 lignes suivantes : les [n] entiers ï¿½ lire                  */
 /*                                                                            */
 /* Modifications :                                                            */
-/*   - [n]       : nombre entier d'éléments lus                               */
+/*   - [n]       : nombre entier d'ï¿½lï¿½ments lus                               */
 /*                                                                            */
 /* Sorties :                                                                  */
-/*   - [t]       : tableau de type int où sont stockés les entiers lus        */
+/*   - [t]       : tableau de type int oï¿½ sont stockï¿½s les entiers lus        */
 /* -------------------------------------------------------------------------- */
 
 int * f_lire_data(char *fichier, int *n);
@@ -35,12 +35,12 @@ int * f_lire_data(char *fichier, int *n);
 /* f_ecrire_data                                                              */
 /* void f_ecrire_data(char *fichier, int *t, int n)                           */
 /*                                                                            */
-/* Ecrire les [n] éléments de type entier du tableau [t] dans un fichier de   */
+/* Ecrire les [n] ï¿½lï¿½ments de type entier du tableau [t] dans un fichier de   */
 /* type texte de nom [fichier]                                                */
-/*                 première ligne   : nombre [n] d'éléments à lire            */
+/*                 premiï¿½re ligne   : nombre [n] d'ï¿½lï¿½ments ï¿½ lire            */
 /*                 lignes suivantes : les [n] entiers de [t]                  */
 /*                                                                            */
-/* Entrées :                                                                  */
+/* Entrï¿½es :                                                                  */
 /*   - [fichier] : nom du fichier                                             */
 /*   - [t] : tableau d'entiers                                                */
 /*   - [n] : nombre d'entiers du tableau                                      */
@@ -55,9 +55,9 @@ void   f_ecrire_data(char *fichier, int *t, int n);
 /* ecrire_data                                                                */
 /* void ecrire_data(int *t, int n)                                            */
 /*                                                                            */
-/* Ecrire les [n] éléments de type entier du tableau [t]  sur stdout          */
+/* Ecrire les [n] ï¿½lï¿½ments de type entier du tableau [t]  sur stdout          */
 /*                                                                            */
-/* Entrées :                                                                  */
+/* Entrï¿½es :                                                                  */
 /*   - [t] : tableau d'entiers                                                */
 /*   - [n] : nombre d'entiers du tableau                                      */
 /*                                                                            */
@@ -71,12 +71,12 @@ void   ecrire_data(int *t, int n);
 /* data_triee                                                                 */
 /* int *data_triee(int n)                                                     */
 /*                                                                            */
-/* Créer un tableau [t]  contenant les  [n] premiers entiers  dans l'ordre    */
+/* Crï¿½er un tableau [t]  contenant les  [n] premiers entiers  dans l'ordre    */
 /* et sans ex-aequo                                                           */
 /*                                                                            */
 /*                                                                            */
-/* Entrées :                                                                  */
-/*   - [n]   : nombre d'entiers du tableau à créer                            */
+/* Entrï¿½es :                                                                  */
+/*   - [n]   : nombre d'entiers du tableau ï¿½ crï¿½er                            */
 /*                                                                            */
 /* Sorties :                                                                  */
 /*   - [t]   : tableau d'entiers                                              */
@@ -90,12 +90,12 @@ int * data_triee(int n);
 /* data_triee_inverse                                                         */
 /* int *data_triee_inverse(int n)                                             */
 /*                                                                            */
-/* Créer un tableau [t]  contenant les  [n] premiers entiers  dans l'ordre    */
+/* Crï¿½er un tableau [t]  contenant les  [n] premiers entiers  dans l'ordre    */
 /* inverse et sans ex-aequo                                                   */
 /*                                                                            */
 /*                                                                            */
-/* Entrées :                                                                  */
-/*   - [n]   : nombre d'entiers du tableau à créer                            */
+/* Entrï¿½es :                                                                  */
+/*   - [n]   : nombre d'entiers du tableau ï¿½ crï¿½er                            */
 /*                                                                            */
 /* Sorties :                                                                  */
 /*   - [t]   : tableau d'entiers                                              */
@@ -109,11 +109,11 @@ int * data_triee_inverse(int n);
 /* random_data                                                                */
 /* int *random_data(int n)                                                    */
 /*                                                                            */
-/* Créer un tableau [t]  contenant [n] nombres entiers aléatoires             */
+/* Crï¿½er un tableau [t]  contenant [n] nombres entiers alï¿½atoires             */
 /*                                                                            */
 /*                                                                            */
-/* Entrées :                                                                  */
-/*   - [n]   : nombre d'entiers du tableau à créer                            */
+/* Entrï¿½es :                                                                  */
+/*   - [n]   : nombre d'entiers du tableau ï¿½ crï¿½er                            */
 /*                                                                            */
 /* Sorties :                                                                  */
 /*   - [t]   : tableau d'entiers                                              */

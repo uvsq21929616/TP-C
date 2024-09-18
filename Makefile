@@ -17,3 +17,8 @@ utilisation.o : utilisation.c tris.h data.h
 
 
 
+clean:
+	rm -f data.o
+	rm -f tris.o
+	rm -f utilisation.o
+	rm -f a.exe

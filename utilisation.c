@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <malloc.h>
+//#include <malloc.h>
 #include <unistd.h>
 #include <string.h>
 #include "tris.h"
 #include "data.h"
 
 
-/* Type des données à trier */
+/* Type des donnï¿½es ï¿½ trier */
 #define UNKNOWN  0
 #define FICHIER 1
 #define RANDOM  2
@@ -15,8 +15,8 @@
 #define TRIE_INVERSE 4
 
 
-/* Type de tri à utiliser */
-/* Numéro XY, X pour la famille, Y pour la version */
+/* Type de tri ï¿½ utiliser */
+/* Numï¿½ro XY, X pour la famille, Y pour la version */
 #define BULLE_NAIF 11
 #define BULLE_BOOL 12
 #define BULLE_OPT  13 
@@ -30,12 +30,12 @@
 /* analyse_complexite                                                         */
 /* void analyse_complexite(complexiteDef *complexite, char * tri)             */
 /*                                                                            */
-/* Afficher les différentes options du programme [nom]                        */
+/* Afficher les diffï¿½rentes options du programme [nom]                        */
 /*                                                                            */
-/* Entrées :                                                                  */
-/*        [complexite] : le résultat en terme de complexité du tri            */
+/* Entrï¿½es :                                                                  */
+/*        [complexite] : le rï¿½sultat en terme de complexitï¿½ du tri            */
 /*        [tri] : le nom du tri                                               */
-/*        [n]   : le nombre d'éléments triés                                  */
+/*        [n]   : le nombre d'ï¿½lï¿½ments triï¿½s                                  */
 /* -------------------------------------------------------------------------- */
 
    void analyse_complexite(structSondes sondes, char *tri, int n)
@@ -43,7 +43,7 @@
       printf("\nAnalyse de la complexite du tri %s de %d entiers\n", tri, n);
       printf("\t  nombre de comparaisons = %ld\n", sondes.nb_comparaisons);
       printf("\t  nombre de copies       = %ld\n", sondes.nb_copies); 
-      printf("\t  nombre d'échanges      = %ld\n", sondes.nb_echanges); 
+      printf("\t  nombre d'ï¿½changes      = %ld\n", sondes.nb_echanges); 
    }
 
 
@@ -52,10 +52,10 @@
 /* aide                                                                       */
 /* int aide(char * nom)                                                       */
 /*                                                                            */
-/* Afficher les différentes options du programme [nom]                        */
+/* Afficher les diffï¿½rentes options du programme [nom]                        */
 /*                                                                            */
-/* Entrées :                                                                  */
-/*        [nom] : le nom de l'exécutable                                      */
+/* Entrï¿½es :                                                                  */
+/*        [nom] : le nom de l'exï¿½cutable                                      */
 /* -------------------------------------------------------------------------- */
 
    void aide(char *nom)
@@ -63,46 +63,46 @@
       printf("\nUtilisation :\n\n  %s [options]\n", nom);
    
       printf("\nOptions :\n");
-      printf("\n[1] Pour les données (des entiers):\n");
+      printf("\n[1] Pour les donnï¿½es (des entiers):\n");
       printf("\n  - lues dans un Fichier texte : -f nom_fichier\n");
-      printf("\n    où nom_fichier est le nom d'un fichier texte de la forme\n");
+      printf("\n    oï¿½ nom_fichier est le nom d'un fichier texte de la forme\n");
       printf("\n      nombre_elements");
       printf("\n      entier1");
       printf("\n      entier2");
       printf("\n      ...");
       printf("\n      entiern");
       printf("\n");
-      printf("\n   - crées Aléatoirement   : -a nombre_elements\n");
-      printf("\n    où nombre_elements est le nombre d'éléments du tableau créé\n");
+      printf("\n   - crï¿½es Alï¿½atoirement   : -a nombre_elements\n");
+      printf("\n    oï¿½ nombre_elements est le nombre d'ï¿½lï¿½ments du tableau crï¿½ï¿½\n");
       printf("\n");
-      printf("\n   - déjà triées (Meilleur des Cas) : -mc nombre_elements\n");
-      printf("\n    où nombre_elements est le nombre d'éléments du tableau créé\n");
+      printf("\n   - dï¿½jï¿½ triï¿½es (Meilleur des Cas) : -mc nombre_elements\n");
+      printf("\n    oï¿½ nombre_elements est le nombre d'ï¿½lï¿½ments du tableau crï¿½ï¿½\n");
       printf("\n");
-      printf("\n   - triées dans l'ordre inverse (Pire des Cas) : -pc nombre_elements\n");
-      printf("\n    où nombre_elements est le nombre d'éléments du tableau créé\n");
+      printf("\n   - triï¿½es dans l'ordre inverse (Pire des Cas) : -pc nombre_elements\n");
+      printf("\n    oï¿½ nombre_elements est le nombre d'ï¿½lï¿½ments du tableau crï¿½ï¿½\n");
       printf("\n");
       printf("\n   - pour sauver la tableau initial dans un fichier texte : -si nom_fichier\n");
-      printf("\n    où nom_fichier est le nom d'un fichier\n");
+      printf("\n    oï¿½ nom_fichier est le nom d'un fichier\n");
       printf("\n");
       printf("\n   - pour sauver la tableau final dans un fichier texte : -sf nom_fichier\n");
-      printf("\n    où nom_fichier est le nom d'un fichier\n");
+      printf("\n    oï¿½ nom_fichier est le nom d'un fichier\n");
       printf("\n");
       printf("\n[2] Pour l'algorithme de Tri :");
       printf("\n  -t algo\n");
-      printf("\n    où algo = bulle_naif, bulle_bool, bulle_opt, selection, insertion, rapide\n");
+      printf("\n    oï¿½ algo = bulle_naif, bulle_bool, bulle_opt, selection, insertion, rapide\n");
       printf("\n");
       printf("\nExemples :\n\n");
-      printf("\n  données lues dans le fichier tab1.dat et triées avec bulle naïf");
+      printf("\n  donnï¿½es lues dans le fichier tab1.dat et triï¿½es avec bulle naï¿½f");
       printf("\n    -f tab1.dat -t bulle_naif\n");
       printf("\n    -t bulle_naif -f tab1.dat\n\n");
-      printf("\n  10 données créées aléatoirement et triées avec insertion");
+      printf("\n  10 donnï¿½es crï¿½ï¿½es alï¿½atoirement et triï¿½es avec insertion");
       printf("\n    -a 10 -t insertion\n");
       printf("\n    -t insertion -a 10\n\n");
-      printf("\n  8 données dans l'ordre inverse, triées avec tri rapide, sauvées dans tab1.dat");
+      printf("\n  8 donnï¿½es dans l'ordre inverse, triï¿½es avec tri rapide, sauvï¿½es dans tab1.dat");
       printf("\n    -pc 8 -t rapide -sf tab1.dat\n");
       printf("\n");
       printf("\n[3]  Pour afficher ou non les tableaux : ");
-		printf("\n    -v   (par défaut on n'affiche pas)\n");
+		printf("\n    -v   (par dï¿½faut on n'affiche pas)\n");
       printf("\n");
    }
 
@@ -141,7 +141,7 @@
    
       for ( i = 1; i < argn; i+=2 )
       {
-      	// choix des données à trier et des sauvegardes éventuelles du tableau initial et final
+      	// choix des donnï¿½es ï¿½ trier et des sauvegardes ï¿½ventuelles du tableau initial et final
          if (strcmp("-f", argv[i]) == 0)
          {
             fichier_lecture_tableau_initial = (char *) malloc(1 + strlen(argv[i+1]) * sizeof(char));
@@ -211,7 +211,7 @@
             	
             else 
             {
-					printf("\t le tri demandé < %s >  n'existe pas \n", argv[i+1]);
+					printf("\t le tri demandï¿½ < %s >  n'existe pas \n", argv[i+1]);
                aide(argv[0]);
                exit(1);
             }
@@ -227,7 +227,7 @@
             continue;
          }
       	
-			printf("\t l'option demandée < %s >  n'existe pas \n", argv[i]);
+			printf("\t l'option demandï¿½e < %s >  n'existe pas \n", argv[i]);
          aide(argv[0]);	
 			exit(1);
       }
@@ -239,14 +239,14 @@
          case TRIE:
             {
                tab = data_triee(n);
-               printf("Tableau initial trié (meilleur des cas)");
+               printf("Tableau initial triï¿½ (meilleur des cas)");
                break;
             }
          
          case TRIE_INVERSE:
             {
                tab = data_triee_inverse(n);
-               printf("Tableau intial trié en ordre inverse (pire des cas)");
+               printf("Tableau intial triï¿½ en ordre inverse (pire des cas)");
                break;
             }
          case FICHIER:
@@ -258,7 +258,7 @@
          case RANDOM:
             {
                tab = random_data(n);
-               printf("Tableau initial aléatoire");
+               printf("Tableau initial alï¿½atoire");
                break;
             }
          case UNKNOWN:
@@ -268,7 +268,7 @@
 
 
    	if (n < 1) {
-			printf("\t le nombre d'éléments à trier est incorrect : %d \n", n);
+			printf("\t le nombre d'ï¿½lï¿½ments ï¿½ trier est incorrect : %d \n", n);
          aide(argv[0]);	
 			exit(1);
 		}
@@ -287,15 +287,15 @@
          case BULLE_NAIF: 
             sondes = tri_bulle_naif(tab, n);
             if (affichage_tableaux == TRUE) {
-               printf("Tableau trié (bulle naïf)\n");
+               printf("Tableau triï¿½ (bulle naï¿½f)\n");
                ecrire_data(tab,  n);
             }
-            analyse_complexite(sondes, "bulle naïf", n);
+            analyse_complexite(sondes, "bulle naï¿½f", n);
             break;
          case BULLE_BOOL: 
             sondes = tri_bulle_bool(tab, n);
             if (affichage_tableaux == TRUE) {
-               printf("Tableau trié (bulle bool)\n");
+               printf("Tableau triï¿½ (bulle bool)\n");
                ecrire_data(tab,  n);
             }
             analyse_complexite(sondes, "bulle bool", n);
@@ -303,7 +303,7 @@
          case BULLE_OPT: 
             sondes = tri_bulle_opt(tab, n);
             if (affichage_tableaux == TRUE) {
-               printf("Tableau trié (bulle opt)\n");
+               printf("Tableau triï¿½ (bulle opt)\n");
                ecrire_data(tab,  n);
             }
             analyse_complexite(sondes, "bulle opt", n);
@@ -311,7 +311,7 @@
          case SELECTION:
             sondes = tri_selection(tab, n);
             if (affichage_tableaux == TRUE) {
-               printf("Tableau trié (selection)\n");
+               printf("Tableau triï¿½ (selection)\n");
                ecrire_data(tab,  n);
             }
             analyse_complexite(sondes, "selection", n);
@@ -319,7 +319,7 @@
          case INSERTION:
             sondes = tri_insertion(tab, n);
             if (affichage_tableaux == TRUE) {
-               printf("Tableau trié (insertion)\n");
+               printf("Tableau triï¿½ (insertion)\n");
                ecrire_data(tab,  n);
             }
             analyse_complexite(sondes, "insertion", n);
@@ -327,7 +327,7 @@
          case TRIRAPIDE:
             sondes = tri_rapide(tab, 0, n-1);
             if (affichage_tableaux == TRUE) {
-               printf("Tableau trié (rapide)\n");
+               printf("Tableau triï¿½ (rapide)\n");
                ecrire_data(tab,  n);
             }
             analyse_complexite(sondes, "rapide", n);
