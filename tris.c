@@ -71,7 +71,6 @@
    }
 
 
-
    structSondes tri_bulle_bool(int *t, int n)
    {
    // A faire : utilisation d'un drapeau (bool�en) qui teste que les donn�es sont tri�es
@@ -96,7 +95,6 @@
       return sondes;
    }
 	
-	
 
    structSondes tri_bulle_opt(int *t, int n)
    {
@@ -106,11 +104,14 @@
       int i, j;
       int last_switch = n;
       structSondes sondes = {0, 0, 0};
-   	for (i = 1; i < n-1; i ++) {
+   	for (i = 1; i < last_switch; i ++) {
          for (j = 1; j < n-1; j ++) {
             if (t[j-1] > t[j]) {
                echanger(t, t[j-1], t[j]);
                last_switch = j;
+            }
+            if (last_switch == 1) {
+               break;
             }
          }
       }
@@ -119,31 +120,40 @@
    }
 
 
-
-
-
-
-
-
    structSondes tri_selection(int *t, int n)
    {  
 
       structSondes sondes = {0, 0, 0};
-  
+      int i, j, i_min;
+      for (i = 0; i < n-1; i++) {
+         i_min = i;
+         for (j = i+1; j <= n-1; j++) {
+            if (t[j] < t[i_min]) 
+               i_min = j;
+            echanger(t, i_min, i);
+         }
+      }
       return sondes;   
    }
-
 
 
    structSondes tri_insertion(int *t, int n)
    {
 
       structSondes sondes = {0, 0, 0};
-   
+      int i, j, temp;
+      
+      for (i = 1; i <= n-1; i++) {
+         temp = t[i];
+         j = i;
+         while (t[j-1] > temp) {
+            t[j] = t [j-1];
+            j = j - 1;
+         }
+         t[j] = temp;
+      }
       return sondes;
    }
-
-
 
 
 /* -------------------------------------------------------------------------- */
@@ -173,7 +183,14 @@
    
 
       structSondes sondes = {0, 0, 0};
-  
+      int i, j, u, pivot;
+      
+      if (droite > gauche) {
+         pivot = t[droite]; 
+         i = gauche-1;
+         j = droite;
+         for ()
+      }
       return sondes;			
    
    }
